@@ -1,0 +1,21 @@
+lastupdatecheck: 0
+recentrepos:
+- /home/nihal/dotfiles
+- /home/nihal/dev/flutter/works/innsof-wt/feature/crm
+- /home/nihal/dev/flutter/works/innsof-wt/main
+- /home/nihal/dev/flutter/works/innsof
+- /home/nihal/.config
+- /home/nihal/dev/go/personal_projects/p2pFileStorage
+- /home/nihal/dev/go/personal_projects/cli/apk_builder_v3
+- /home/nihal/dev/flutter/works/raf-pharmacy
+- /home/nihal/dev/flutter/works/innsof_raf
+- /home/nihal/dev/.net/works/services
+- /home/nihal/.local/share/nvim/lazy/LuaSnip
+- /home/nihal/dev/go/personal_projects/cli/apk_builder
+- /home/nihal/dev/flutter/reference_projects/conference-app
+- /home/nihal/.local/share/nvim/lazy/nvim-treesitter
+startuppopupversion: 5
+customcommandshistory:
+- qa
+hidecommandlog: false
+ignorewhitespaceindiffview: true
