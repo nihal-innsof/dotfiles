@@ -60,6 +60,7 @@ alias lg="lazygit"
 alias ls="ls -la"
 alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 alias g="git"
+alias cat="bat"
 # alias x="/home/n1h41/development/bash/x.sh"
 
 # Update path
