@@ -1,9 +1,9 @@
 # Created by Zap installer
-# [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-# plug "zsh-users/zsh-autosuggestions"
-# plug "zap-zsh/supercharge"
-# plug "zap-zsh/zap-prompt"
-# plug "zsh-users/zsh-syntax-highlighting"
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-syntax-highlighting"
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -83,18 +83,9 @@ export PATH="$PATH:/opt/mssql-tools/bin"
 JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export JAVA_HOME
 
-# Add platform tools to the path
-# export PATH="$PATH:/home/n1h41/Android/Sdk/platform-tools"
-
-# Add go binaries to the path
-# export PATH="$PATH:/home/n1h41/go/bin"
-
 # initialise zoxide
 eval "$(zoxide init zsh)"
 
-# export PATH=/home/n1h41/bin:$PATH
-#
-#
 # Transfer.sh
 # Add this to .bashrc or .zshrc or its equivalent
 transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
@@ -102,4 +93,3 @@ transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfe
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-source /home/nihal/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
