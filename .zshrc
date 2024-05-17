@@ -1,4 +1,3 @@
-
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -73,9 +72,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # Update path with flutter binaries
 export PATH="$PATH:/usr/bin/flutter/bin"
-export PATH="$PATH:/home/nihal/.local/bin"
+export PATH="$PATH:/home/n1h41/Android/Sdk/platform-tools"
+
 # Go path
 export PATH="$PATH:/usr/local/go/bin"
+
 # Go executables path
 export PATH="$PATH:/home/n1h41/go/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
