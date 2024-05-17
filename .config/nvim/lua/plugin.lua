@@ -348,7 +348,7 @@ local plugins = {
   },
 
   -- Custom Parameters (with defaults)
-  --[[ {
+  {
     "David-Kunz/gen.nvim",
     opts = {
       model = "zephyr",       -- The default model to use.
@@ -371,7 +371,7 @@ local plugins = {
       -- list_models = '<omitted lua function>', -- Retrieves a list of model names
       debug = false -- Prints errors and the command which is run.
     }
-  }, ]]
+  },
   -- Color picker
   {
     "ziontee113/color-picker.nvim",

@@ -72,13 +72,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Update path with flutter binaries
-export PATH="$PATH:/home/nihal/flutter/bin"
-export PATH="/usr/bin/nvim-linux64/bin:/home/nihal/Android/Sdk/platform-tools:$HOME/.pub-cache/bin:/home/nihal/Downloads/android-studio/bin:$PATH"
+export PATH="$PATH:/usr/bin/flutter/bin"
 export PATH="$PATH:/home/nihal/.local/bin"
 # Go path
 export PATH="$PATH:/usr/local/go/bin"
 # Go executables path
-export PATH="$PATH:/home/nihal/go/bin"
+export PATH="$PATH:/home/n1h41/go/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
 JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export JAVA_HOME
