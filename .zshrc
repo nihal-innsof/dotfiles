@@ -1,3 +1,4 @@
+
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -57,20 +58,13 @@ bindkey '^ ' autosuggest-accept
 alias cls="clear"
 alias vim="nvim"
 alias lg="lazygit"
-alias ls="ls -la"
+alias ls="exa -la"
 alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 alias g="git"
-alias cat="bat"
-# alias x="/home/n1h41/development/bash/x.sh"
+alias tmux="tmux -u"
+alias cat="batcat"
 
-# Update path
-export PATH=$PATH:/home/n1h41/lsp/lua-language-server/bin:/usr/bin/nvim/bin:/home/n1h41/go/bin
 
-# Deno
-# export DENO_INSTALL="/home/n1h41/.deno"
-# export PATH="$DENO_INSTALL/bin:$PATH"
-# export VSCODE_WINDOWS="/mnt/c/Users/nihal/AppData/Local/Programs/Microsoft VS Code/bin"
-# export PATH="$PATH:$VSCODE_WINDOWS"
 # source /home/n1h41/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export NVM_DIR="$HOME/.nvm"
@@ -78,15 +72,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Update path with flutter binaries
-export PATH="$PATH:/usr/bin/flutter/bin"
-
-# Add platform tools to the path
-# export PATH="$PATH:/home/n1h41/Android/Sdk/platform-tools"
-
-# Add go binaries to the path
+export PATH="$PATH:/home/nihal/flutter/bin"
+export PATH="/usr/bin/nvim-linux64/bin:/home/nihal/Android/Sdk/platform-tools:$HOME/.pub-cache/bin:/home/nihal/Downloads/android-studio/bin:$PATH"
+export PATH="$PATH:/home/nihal/.local/bin"
+# Go path
 export PATH="$PATH:/usr/local/go/bin"
+# Go executables path
+export PATH="$PATH:/home/nihal/go/bin"
+export PATH="$PATH:/opt/mssql-tools/bin"
+JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+export JAVA_HOME
 
 # initialise zoxide
 eval "$(zoxide init zsh)"
 
-neofetch
+# Transfer.sh
+# Add this to .bashrc or .zshrc or its equivalent
+transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
