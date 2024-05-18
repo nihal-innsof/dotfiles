@@ -93,3 +93,5 @@ transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfe
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+neofetch
