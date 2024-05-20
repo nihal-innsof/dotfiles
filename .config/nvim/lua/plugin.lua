@@ -340,11 +340,22 @@ local plugins = {
       'nvim-tree/nvim-web-devicons',
     },
   },
-  -- Rest client
+  -- -- Rest client
   {
-    lazy = true,
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+    }
+  },
+  {
     "rest-nvim/rest.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
+    ft = "http",
+    dependencies = { "luarocks.nvim" },
+    config = function()
+      require("rest-nvim").setup()
+    end,
   },
 
   -- Custom Parameters (with defaults)
@@ -357,7 +368,7 @@ local plugins = {
       display_mode = "split", -- The display mode. Can be "float" or "split".
       show_prompt = false,    -- Shows the Prompt submitted to Ollama.
       show_model = true,      -- Displays which model you are using at the beginning of your chat session.
-      no_auto_close = true,  -- Never closes the window automatically.
+      no_auto_close = true,   -- Never closes the window automatically.
       init = function(_) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
       -- Function to initialize Ollama
       command = function(options)
@@ -383,7 +394,8 @@ local plugins = {
     init = function()
       -- VimTeX configuration goes here
     end
-  }
+  },
+  { "nvim-neotest/nvim-nio" },
 }
 
 require('lazy').setup(plugins, {})
