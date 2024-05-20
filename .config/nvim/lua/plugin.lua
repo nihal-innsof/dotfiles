@@ -354,10 +354,10 @@ local plugins = {
       model = "zephyr",       -- The default model to use.
       host = "localhost",     -- The host running the Ollama service.
       port = "11434",         -- The port on which the Ollama service is listening.
-      display_mode = "float", -- The display mode. Can be "float" or "split".
+      display_mode = "split", -- The display mode. Can be "float" or "split".
       show_prompt = false,    -- Shows the Prompt submitted to Ollama.
-      show_model = false,     -- Displays which model you are using at the beginning of your chat session.
-      no_auto_close = false,  -- Never closes the window automatically.
+      show_model = true,      -- Displays which model you are using at the beginning of your chat session.
+      no_auto_close = true,  -- Never closes the window automatically.
       init = function(_) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
       -- Function to initialize Ollama
       command = function(options)
@@ -376,6 +376,14 @@ local plugins = {
   {
     "ziontee113/color-picker.nvim",
   },
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here
+    end
+  }
 }
 
 require('lazy').setup(plugins, {})
