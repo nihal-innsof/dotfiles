@@ -68,6 +68,7 @@
   "vim-dadbod-ui": { "branch": "master", "commit": "9ddb0623e69d696b7a8355b93e3950a8dc6e00a0" },
   "vim-fugitive": { "branch": "master", "commit": "46eaf8918b347906789df296143117774e827616" },
   "vim-tmux-navigator": { "branch": "master", "commit": "a26954a585b02a2ac02f87145e204f8798a7cbc2" },
+  "vimtex": { "branch": "master", "commit": "9665df7f51ee24aa81dbd81782e0a22480209753" },
   "vscode-node-debug2": { "branch": "main", "commit": "20ee19f33af9b54b92cf50ce478c07da3a5188b3" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "zen-mode.nvim": { "branch": "main", "commit": "50e2e2a36cc97847d9ab3b1a3555ba2ef6839b50" }
