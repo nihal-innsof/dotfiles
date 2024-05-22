@@ -52,14 +52,6 @@ vim.opt.formatoptions:append { 'r' }
 -- Colorscheme custom (gruvbox)
 vim.o.background = "dark"
 
--- terminal
--- vim.opt.shell = vim.fn.executable "pwsh" and "pwsh" or "powershell"
--- vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
--- vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
--- vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
--- vim.opt.shellquote = ""
--- vim.opt.shellxquote = ""
-
 vim.o.autoread = true
 
 vim.g.neovide_scale_factor = 0.7
@@ -103,3 +95,17 @@ vim.filetype.add({ extension = { templ = "templ" } })
 function stringify_json(data)
   return vim.fn.json_encode(data)
 end
+
+-- Latex Configs
+vim.cmd([[filetype plugin indent on]])
+vim.cmd([[syntax enable]])
+
+vim.g.vimtex_compiler_enabled = true
+vim.cmd([[let g:tex_flavor = 'latex']])
+
+vim.cmd([[let g:vimtex_view_method = 'zathura']])
+
+vim.cmd([[let g:vimtex_view_general_viewer = 'zathura']])
+vim.cmd([[let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex']])
+
+vim.cmd([[let g:vimtex_compiler_method = 'latexmk']])
