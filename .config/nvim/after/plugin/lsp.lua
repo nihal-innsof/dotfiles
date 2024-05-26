@@ -87,6 +87,23 @@ lsp_zero.setup_nvim_cmp({
   },
 })
 
+local templ_format = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+  vim.fn.jobstart(cmd, {
+    on_exit = function()
+      -- Reload the buffer only if it's still the current buffer
+      if vim.api.nvim_get_current_buf() == bufnr then
+        vim.cmd('e!')
+      end
+    end,
+  })
+end
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = templ_format })
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -101,6 +118,9 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.colorProvider then
     require("document-color").buf_attach(bufnr)
   end
+
+  local opts = { buffer = bufnr, remap = false }
+  vim.keymap.set("n", "<S-A-f>", templ_format, opts)
 end
 
 

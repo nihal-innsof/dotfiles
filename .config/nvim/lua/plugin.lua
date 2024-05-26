@@ -387,7 +387,8 @@ local plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
+      -- other stuff
+      background_colour = "#000000"
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
