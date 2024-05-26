@@ -57,7 +57,7 @@ bindkey '^ ' autosuggest-accept
 alias cls="clear"
 alias vim="nvim"
 alias lg="lazygit"
-alias ls="exa -la"
+alias ls="eza -la --icons --git -a"
 alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 alias g="git"
 alias tmux="tmux -u"
