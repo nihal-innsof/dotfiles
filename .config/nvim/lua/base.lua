@@ -90,3 +90,17 @@ vim.g.octo_viewer = "n1h41"
 vim.o.exrc = true
 
 vim.filetype.add({ extension = { templ = "templ" } })
+
+-- Vimtex (Latex)
+vim.cmd([[filetype plugin indent on]])
+vim.cmd([[syntax enable]])
+
+vim.g.vimtex_compiler_enabled = true
+vim.cmd([[let g:tex_flavor = 'latex']])
+
+vim.cmd([[let g:vimtex_view_method = 'zathura']])
+
+vim.cmd([[let g:vimtex_view_general_viewer = 'zathura']])
+vim.cmd([[let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex']])
+
+vim.cmd([[let g:vimtex_compiler_method = 'latexmk']])

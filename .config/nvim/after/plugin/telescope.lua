@@ -21,6 +21,9 @@ telescope.setup {
         ['<C-f>'] = actions.preview_scrolling_down,
       }
     },
-    file_ignore_patterns = { ".git/" },
+    file_ignore_patterns = {
+      ".git/",
+      "node_modules",
+    },
   }
 }

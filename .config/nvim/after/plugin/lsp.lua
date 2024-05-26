@@ -6,7 +6,8 @@ end
 
 lsp_zero.preset('recommended')
 
-lsp_zero.ensure_installed({ 'tsserver', 'lua_ls', "gopls", "html", --[[ "eslint_d", ]] --[[ "cssls", ]] --[[ "tailwindcss" ]] })
+lsp_zero.ensure_installed({ 'tsserver', 'lua_ls', "gopls", "html", "graphql", "emmet_language_server", "tailwindcss",
+  "htmx" })
 
 local cmp = require('cmp')
 
@@ -149,7 +150,7 @@ flutter.setup {
     exception_breakpoints = { "always" }
   },
   flutter_path = "/usr/bin/flutter/bin/flutter", -- <-- this takes priority over the lookup
-  fvm = false,                                      -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+  fvm = false,                                   -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
   widget_guides = {
     enabled = true,
   },
