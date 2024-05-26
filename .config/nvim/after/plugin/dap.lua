@@ -2,7 +2,7 @@ local dap = require('dap')
 local dapui = require('dapui')
 
 dap.defaults.fallback.external_terminal = {
-  command = '/usr/bin/alacritty',
+  command = '/usr/bin/kitty',
   args = { '-e' },
 }
 
