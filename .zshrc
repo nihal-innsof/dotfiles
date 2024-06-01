@@ -62,6 +62,7 @@ alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen
 alias g="git"
 alias tmux="tmux -u"
 alias cat="batcat"
+alias lzd="lazydocker"
 
 
 # source /home/n1h41/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -83,6 +84,9 @@ export PATH="$PATH:/opt/mssql-tools/bin"
 JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export JAVA_HOME
 
+# cargo installed apps path
+export PATH="$PATH:/home/n1h41/.cargo/bin"
+
 # initialise zoxide
 eval "$(zoxide init zsh)"
 
@@ -90,4 +94,4 @@ source <(fzf --zsh)
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-neofetch
+krabby name pikachu
