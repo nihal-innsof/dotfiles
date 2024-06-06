@@ -61,7 +61,7 @@ alias ls="eza -la --icons --git -a"
 alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 alias g="git"
 alias tmux="tmux -u"
-alias cat="batcat"
+alias cat="bat"
 alias lzd="lazydocker"
 
 
@@ -94,4 +94,4 @@ source <(fzf --zsh)
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-krabby name pikachu
+krabby random

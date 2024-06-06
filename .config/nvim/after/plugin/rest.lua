@@ -79,5 +79,3 @@ rest.setup({
 })
 
 require("telescope").load_extension("rest")
-
--- require("telescope").extensions.rest.select_env()
