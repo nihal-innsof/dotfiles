@@ -123,6 +123,7 @@ local on_attach = function(client, bufnr)
     require("document-color").buf_attach(bufnr)
   end
 
+---@diagnostic disable-next-line: redefined-local
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set("n", "<S-A-f>", templ_format, opts)
 end

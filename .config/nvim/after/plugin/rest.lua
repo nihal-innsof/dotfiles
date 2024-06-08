@@ -5,7 +5,7 @@ if (not status) then return end
 rest.setup({
   client = "curl",
   env_file = ".env",
-  env_pattern = "\\.env\\..*",
+  env_pattern = "\\.env\\.env.*",
   env_edit_command = "tabedit",
   encode_url = true,
   skip_ssl_verification = false,

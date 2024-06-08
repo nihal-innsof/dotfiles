@@ -8,7 +8,7 @@ end
 
 onedark.setup({
   style = "deep",
-  transparent = false,
+  transparent = true,
   toggle_style_key = "<leader>ts",
   code_style = {
     keywords = 'bold',

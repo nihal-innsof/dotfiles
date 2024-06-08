@@ -40,6 +40,11 @@ nvim_tree.setup({
     show_on_open_dirs = false,
     debounce_delay = 100,
   },
+  filters = {
+    enable = true,
+    git_ignored = true,
+    dotfiles = true,
+  },
   modified = {
     enable = true,
   },

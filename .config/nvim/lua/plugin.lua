@@ -399,6 +399,10 @@ local plugins = {
       "rcarriga/nvim-notify",
     }
   },
+  {
+    "nvim-neorg/neorg",
+    dependencies = { "luarocks.nvim" },
+  },
 }
 
 require('lazy').setup(plugins, {})
