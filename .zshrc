@@ -82,6 +82,10 @@ export JAVA_HOME
 # initialise zoxide
 eval "$(zoxide init zsh)"
 
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+alias lzd='lazydocker'
