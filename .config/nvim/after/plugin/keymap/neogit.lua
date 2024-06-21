@@ -5,7 +5,7 @@ end
 
 local keymap = {
   g = {
-    t = {
+    G = {
       function()
         require("neogit").open()
       end,
@@ -14,7 +14,10 @@ local keymap = {
 }
 
 whichkey.register(keymap, {
+  mode = "n",
   prefix = "<leader>",
+  buffer = nil,
   silent = true,
   noremap = true,
+  nowait = false,
 })

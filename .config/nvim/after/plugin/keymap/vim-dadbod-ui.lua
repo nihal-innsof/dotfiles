@@ -5,7 +5,7 @@ end
 
 local keymap = {
   d = {
-    b = {  "<cmd>DBUI<CR>", "Database UI" },
+    b = { "<cmd>DBUI<CR>", "Database UI" },
   }
 }
 
