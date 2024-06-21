@@ -5,7 +5,7 @@ if (not status) then
 end
 
 dashboard.setup({
-  theme = "doom",
+  theme = "hyper",
   hide = {
     statusline = true,
     tabline = true,

@@ -28,6 +28,7 @@ ts.setup {
     "http",
     "json",
     "rust",
+    "c",
   },
   autotag = {
     enable = true,

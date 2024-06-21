@@ -403,6 +403,37 @@ local plugins = {
     "nvim-neorg/neorg",
     dependencies = { "luarocks.nvim" },
   },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1001, -- this plugin needs to run before anything else
+    opts = {
+      rocks = { "magick" },
+    },
+  },
+  {
+    "3rd/image.nvim",
+    dependencies = { "luarocks.nvim" },
+    opts = {},
+  },
+
+  -- LOCAL PLUGIN DEVELOPMENT
+  {
+    dir = "/home/n1h41/dev/nvim/myPlugin/",
+    dev = true,
+  },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      -- "ibhagwan/fzf-lua",            -- optional
+    },
+    config = true
+  },
 }
 
 require('lazy').setup(plugins, {})

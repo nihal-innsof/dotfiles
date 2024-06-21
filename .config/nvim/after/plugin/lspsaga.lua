@@ -9,6 +9,16 @@ saga.setup({
       normal_bg = '#002b36'
     }
   },
+  definition = {
+    keys = {
+      vsplit = "sv",
+      split = 'ss',
+      tabe = 't',
+    },
+  },
+  implement = {
+    enable = true,
+  },
   lightbulb = {
     enable = false,
     enable_in_insert = false

@@ -121,3 +121,11 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
+
+-- Noevide only configs
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font"
+  vim.g.neovide_transparency = 0.5
+  vim.g.transparency = 0.5
+  vim.g.neovide_background_color = "0D1118"
+end
