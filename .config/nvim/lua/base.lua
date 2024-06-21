@@ -91,11 +91,6 @@ vim.o.exrc = true
 
 vim.filetype.add({ extension = { templ = "templ" } })
 
--- Json stringifier and unstringifier
-function stringify_json(data)
-  return vim.fn.json_encode(data)
-end
-
 -- Latex Configs
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[syntax enable]])
