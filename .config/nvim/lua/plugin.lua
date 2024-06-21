@@ -10,7 +10,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   'wbthomason/packer.nvim',
-  { "folke/neodev.nvim",   opts = {} },
+  { "folke/neodev.nvim",    opts = {} },
   -- LSP
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -227,6 +227,7 @@ local plugins = {
       }
     },
   },
+  { "nvim-neotest/nvim-nio" },
   -- Which key
   {
     "folke/which-key.nvim",
@@ -274,11 +275,21 @@ local plugins = {
   },
   -- Database Management
   {
-    "tpope/vim-dadbod",
+    'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      "kristijanhusak/vim-dadbod-ui",
-      "kristijanhusak/vim-dadbod-completion",
+      { 'tpope/vim-dadbod',                     lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql', 'tsql' }, lazy = true },
     },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
   },
   {
     'navarasu/onedark.nvim'
@@ -340,11 +351,6 @@ local plugins = {
       'nvim-tree/nvim-web-devicons',
     },
   },
-  -- Rest client
-  {
-    "rest-nvim/rest.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-  },
   -- NUI
   {
     "grapp-dev/nui-components.nvim",
@@ -402,7 +408,28 @@ local plugins = {
     lazy = false,     -- we don't want to lazy load VimTeX
     init = function() -- VimTeX configuration goes here
     end
-  }
+  },
+  -- lazy.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
+  -- Rest client
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+  },
 }
 
 require('lazy').setup(plugins, {})

@@ -9,6 +9,9 @@ saga.setup({
       normal_bg = '#002b36'
     }
   },
+  implement = {
+    enable = true,
+  },
   lightbulb = {
     enable = false,
     enable_in_insert = false

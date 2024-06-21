@@ -9,11 +9,15 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
   sources = {
     null_ls.builtins.hover.dictionary,
-    null_ls.builtins.formatting.prettierd,
+    -- null_ls.builtins.formatting.prettierd,
     -- null_ls.builtins.code_actions.eslint_d,
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.formatting.goimports_reviser,
+    null_ls.builtins.formatting.sqlfluff.with({
+      extra_args = { "--dialect", "tsql" },   -- change to your dialect
+    }),
     -- null_ls.builtins.formatting.sql_formatter.with { command = "sleek" },
+    -- null_ls.builtins.formatting.asmfmt,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

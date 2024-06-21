@@ -1,14 +1,6 @@
 local dap = require('dap')
 local dapui = require('dapui')
 
-dap.defaults.fallback.external_terminal = {
-  command = '/usr/bin/alacritty',
-  args = { '-e' },
-}
-
-
-dap.defaults.fallback.force_external_terminal = true
-
 dap.adapters.dart = {
   type = 'executable',
   command = vim.fn.stdpath('data') .. '/mason/bin/dart-debug-adapter',
@@ -29,7 +21,7 @@ dap.configurations.dart = {
     flutterSdkPath = "/home/nihal/flutter/",
     program = "${workspaceFolder}/lib/main.dart",
     cwd = "${workspaceFolder}",
-    console = 'terminal',
+    console = 'externalTerminal',
   }
 }
 

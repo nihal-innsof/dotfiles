@@ -38,10 +38,13 @@ nvim_tree.setup({
     enable = true,
     show_on_dirs = true,
     show_on_open_dirs = false,
-    debounce_delay = 100,
+    debounce_delay = 50,
   },
   modified = {
     enable = true,
+  },
+  filters = {
+    dotfiles = true,
   },
   view = {
     float = {
