@@ -9,7 +9,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  'wbthomason/packer.nvim',
+  -- 'wbthomason/packer.nvim',
   { "folke/neodev.nvim",    opts = {} },
   -- LSP
   {
@@ -215,8 +215,8 @@ local plugins = {
       { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
       {
         "microsoft/vscode-node-debug2",
-        opt = true,
-        run = "npm install && npm run build"
+        -- opt = true,
+        -- run = "npm install && npm run build"
 
       },
       {
@@ -450,6 +450,7 @@ local plugins = {
   {
     "vhyrro/luarocks.nvim",
     priority = 1001, -- this plugin needs to run before anything else
+    config = true,
     opts = {
       rocks = { "magick" },
     },
@@ -458,7 +459,30 @@ local plugins = {
     "3rd/image.nvim",
     dependencies = { "luarocks.nvim" },
     opts = {}
-  }
+  },
+  -- Neorg
+  {
+    "nvim-neorg/neorg",
+    dependencies = { "luarocks.nvim" },
+    lazy = false,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    version = "*", -- Pin Neorg to the latest stable release
+    opts = {
+      load = {
+        ["core.defaults"] = {},
+        ["core.dirman"] = {
+          config = {
+            default_workspace = "knowledge_base",
+            workspaces = {
+              knowledge_base = "~/Documents/knowledge_base/"
+            }
+          }
+        },
+        ["core.syntax"] = {},
+        ["core.concealer"] = {},
+      }
+    },
+    config = true,
+  },
 }
 
 require('lazy').setup(plugins, {})
