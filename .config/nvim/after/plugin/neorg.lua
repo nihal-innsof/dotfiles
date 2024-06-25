@@ -4,4 +4,16 @@ if (not status) then
 end
 
 ---@diagnostic disable-next-line: missing-fields
-neorg.setup({})
+neorg.setup({
+  load = {
+    ["core.defaults"] = {},
+    ["core.dirman"] = {
+      config = {
+        default_workspace = "kBase",
+        workspaces = {
+          kBase = "~/Documents/kBase",
+        }
+      }
+    }
+  }
+})
