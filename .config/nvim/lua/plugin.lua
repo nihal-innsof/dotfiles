@@ -245,7 +245,10 @@ local plugins = {
   {
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    dependencies = {
+      { 'juansalvatore/git-dashboard-nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+      { 'nvim-tree/nvim-web-devicons' },
+    }
   },
   -- Flutter
   {
@@ -388,7 +391,7 @@ local plugins = {
     event = "VeryLazy",
     opts = {
       -- other stuff
-      background_colour = "#000000"
+      background_colour = "#333333"
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -425,7 +428,7 @@ local plugins = {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed, not both.
