@@ -60,18 +60,28 @@ local lspkind = require('lspkind')
 
 lsp_zero.setup_nvim_cmp({
   mapping = cmp_mappings,
-  sources = { {
-    name = 'nvim_lsp'
-  }, {
-    name = 'path'
-  }, {
-    name = 'luasnip'
-  }, {
-    name = 'buffer',
-    keyword_length = 5
-  }, {
-    name = 'vim-dadbod-completion',
-  } },
+  sources = {
+    {
+      name = 'nvim_lsp'
+    },
+    {
+      name = 'path'
+    },
+    {
+      name = 'luasnip'
+    },
+    {
+      name = 'buffer',
+      keyword_length = 5
+    },
+    {
+      name = 'vim-dadbod-completion',
+    },
+    {
+      name = 'lazydev',
+      group_index = 0,
+    }
+  },
   formatting = {
     fields = { 'abbr', 'kind', 'menu' },
     format = lspkind.cmp_format({
@@ -87,23 +97,28 @@ lsp_zero.setup_nvim_cmp({
   },
 })
 
+-- WARN: Added this block of code to show braces when doing completion in lua files
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+--
+
 local templ_format = function()
   if vim.bo.filetype == "templ" then
-        local bufnr = vim.api.nvim_get_current_buf()
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+    local bufnr = vim.api.nvim_get_current_buf()
+    local filename = vim.api.nvim_buf_get_name(bufnr)
+    local cmd = "templ fmt " .. vim.fn.shellescape(filename)
 
-        vim.fn.jobstart(cmd, {
-            on_exit = function()
-                -- Reload the buffer only if it's still the current buffer
-                if vim.api.nvim_get_current_buf() == bufnr then
-                    vim.cmd('e!')
-                end
-            end,
-        })
-    else
-        vim.lsp.buf.format()
-    end
+    vim.fn.jobstart(cmd, {
+      on_exit = function()
+        -- Reload the buffer only if it's still the current buffer
+        if vim.api.nvim_get_current_buf() == bufnr then
+          vim.cmd('e!')
+        end
+      end,
+    })
+  else
+    vim.lsp.buf.format()
+  end
 end
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = templ_format })
@@ -123,7 +138,7 @@ local on_attach = function(client, bufnr)
     require("document-color").buf_attach(bufnr)
   end
 
----@diagnostic disable-next-line: redefined-local
+  ---@diagnostic disable-next-line: redefined-local
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set("n", "<S-A-f>", templ_format, opts)
 end
@@ -144,7 +159,7 @@ lsp_zero.capabilities = capabilities
 lsp_zero.configure('tsserver', {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "templ" },
   cmd = { "typescript-language-server", "--stdio" }
 })
 

@@ -17,6 +17,7 @@ ts.setup {
     "markdown",
     "markdown_inline",
     "tsx",
+    "javascript",
     "toml",
     "json",
     "yaml",
@@ -29,6 +30,7 @@ ts.setup {
     "json",
     "rust",
     "c",
+    "vimdoc",
   },
   autotag = {
     enable = true,

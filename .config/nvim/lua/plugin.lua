@@ -10,7 +10,18 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   'wbthomason/packer.nvim',
-  { "folke/neodev.nvim",   opts = {} },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings,
   -- LSP
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -344,18 +355,17 @@ local plugins = {
     },
   }, ]]
   -- -- Rest client
-  {
+  --[[ {
     "vhyrro/luarocks.nvim",
     priority = 1000,
     config = true,
     opts = {
       rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
     }
-  },
+  }, ]]
   {
     "rest-nvim/rest.nvim",
     ft = "http",
-    dependencies = { "luarocks.nvim" },
   },
   {
     "ziontee113/color-picker.nvim",
@@ -404,7 +414,6 @@ local plugins = {
   },
   {
     "nvim-neorg/neorg",
-    dependencies = { "luarocks.nvim" },
   },
   {
     "vhyrro/luarocks.nvim",
@@ -415,16 +424,16 @@ local plugins = {
   },
   {
     "3rd/image.nvim",
-    dependencies = { "luarocks.nvim" },
-    opts = {},
+    opts = {
+      backend = "kitty",
+      integrations = {
+        neorg = {
+          enabled = false,
+        }
+      }
+    },
   },
-
-  -- LOCAL PLUGIN DEVELOPMENT
-  {
-    dir = "/home/n1h41/dev/nvim/myPlugin/",
-    dev = true,
-  },
-
+  -- Git integration (fugitive alternative)
   {
     "NeogitOrg/neogit",
     dependencies = {
@@ -437,6 +446,17 @@ local plugins = {
     },
     config = true
   },
+  -- LOCAL PLUGIN DEVELOPMENT
+  {
+    dir = "~/dev/nvim/personal/myPlugin",
+    config = function()
+      require('myPlugin').setup()
+    end
+  },
+  {
+    dir = "~/dev/nvim/reference/example.nvim",
+  }
+
 }
 
 require('lazy').setup(plugins, {})

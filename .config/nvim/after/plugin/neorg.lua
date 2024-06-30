@@ -14,6 +14,8 @@ neorg.setup({
           kBase = "~/Documents/kBase",
         }
       }
-    }
+    },
+    ["core.concealer"] = {},
+    ["core.syntax"] = {},
   }
 })
