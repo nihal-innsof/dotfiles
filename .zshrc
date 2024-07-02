@@ -63,6 +63,7 @@ alias g="git"
 alias tmux="tmux -u"
 alias cat="bat"
 alias lzd="lazydocker"
+alias tx="tmuxinator"
 
 
 # source /home/n1h41/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -93,5 +94,7 @@ eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+export EDITOR="nvim"
 
 krabby random

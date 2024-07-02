@@ -34,6 +34,24 @@ dap.adapters.codelldb = {
   }
 }
 
+dap.adapters["local-lua"] = {
+  type = "executable",
+  command = "node",
+  args = {
+    "~/debuggers/local-lua-debugger-vscode/extension/debugAdapter.js"
+  },
+  enrich_config = function(config, on_config)
+    if not config["extensionPath"] then
+      local c = vim.deepcopy(config)
+      ---@diagnostic disable-next-line: inject-field
+      c.extensionPath = "~/debuggers/local-lua-debugger-vscode/extension/debugAdapter.js"
+      on_config(c)
+    else
+      on_config(config)
+    end
+  end
+}
+
 dap.configurations.dart = {
   {
     type = "dart",

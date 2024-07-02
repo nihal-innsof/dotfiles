@@ -70,10 +70,10 @@ rest.setup({
   ---@see vim.keymap.set
   keybinds = {
     {
-      "<localleader>rr", "<cmd>Rest run<cr>", "Run request under the cursor",
+      "<leader>rr", "<cmd>Rest run<cr>", "Run request under the cursor",
     },
     {
-      "<localleader>rl", "<cmd>Rest run last<cr>", "Re-run latest request",
+      "<leader>rl", "<cmd>Rest run last<cr>", "Re-run latest request",
     },
   },
 })

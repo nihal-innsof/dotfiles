@@ -20,7 +20,14 @@ onedark.setup({
     ["DashboardFooter"] = { fg = "#e3e3e3" },
     ["DashboardShortCut"] = { fg = "white" },
     ["NormalFloat"] = { bg = "NONE" },
-    ["HoverBorder"] = { bg = "NONE" }
+    ["HoverBorder"] = { bg = "NONE" },
+    ["SagaBorder"] = { bg = "NONE" },
+    ["FloatBorder"] = { bg = "NONE", fg = "#8BCD5B" },
+    ["Pmenu"] = { bg = "NONE" },
+    ["PmenuSel"] = { fg = "#e3e3e3" },
+    ["PmenuSbar"] = { bg = "#1A212E" },
+    ["PmenuThumb"] = { bg = "#8BCD5B" },
+    ["BorderBg"] = { bg = "#8BCD5B" },
   }
 })
 

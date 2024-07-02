@@ -129,3 +129,11 @@ if vim.g.neovide then
   vim.g.transparency = 0.5
   vim.g.neovide_background_color = "0D1118"
 end
+
+-- Custom symbols for diagnostics
+local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
+
+for name, icon in pairs(symbols) do
+	local hl = "DiagnosticSign" .. name
+	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+end

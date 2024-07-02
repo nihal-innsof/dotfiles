@@ -9,6 +9,14 @@ if (not status2) then
 end
 
 local keymap = {
+  h = {
+    t = {
+      function()
+        telescope.help_tags()
+      end,
+      "List help tags"
+    }
+  },
   f = {
     f = { function()
       telescope.find_files({ no_ignore = false, hidden = true })
@@ -16,9 +24,6 @@ local keymap = {
     r = { function()
       telescope.live_grep({ no_ignore = false, hidden = true })
     end, "Live Grep" },
-    h = { function()
-      telescope.help_tags()
-    end, "List help tags" },
   },
   a = {
     c = { function()

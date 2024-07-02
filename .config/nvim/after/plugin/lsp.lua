@@ -7,7 +7,7 @@ end
 lsp_zero.preset('recommended')
 
 lsp_zero.ensure_installed({ 'tsserver', 'lua_ls', "gopls", "html", "graphql", "emmet_language_server", "tailwindcss",
-  "htmx" })
+  "htmx", "templ" })
 
 local cmp = require('cmp')
 
@@ -21,7 +21,7 @@ local cmp_mappings = lsp_zero.defaults.cmp_mappings({
   })
 })
 
--- disable completion with tab
+-- INFO: disable completion with tab
 -- this helps with copilot setup
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
@@ -80,7 +80,7 @@ lsp_zero.setup_nvim_cmp({
     {
       name = 'lazydev',
       group_index = 0,
-    }
+    },
   },
   formatting = {
     fields = { 'abbr', 'kind', 'menu' },
@@ -97,10 +97,9 @@ lsp_zero.setup_nvim_cmp({
   },
 })
 
--- WARN: Added this block of code to show braces when doing completion in lua files
+-- INFO: Added this block of code to show braces when doing completion in lua files
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
---
 
 local templ_format = function()
   if vim.bo.filetype == "templ" then
@@ -123,7 +122,7 @@ end
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = templ_format })
 
--- Use an on_attach function to only map the following keys
+-- INFO: Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -154,14 +153,6 @@ capabilities.textDocument.colorProvider = {
 }
 
 lsp_zero.capabilities = capabilities
-
-
-lsp_zero.configure('tsserver', {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "templ" },
-  cmd = { "typescript-language-server", "--stdio" }
-})
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -234,6 +225,45 @@ flutter.setup {
 
 local util = require("lspconfig.util")
 
+lsp_zero.configure('lua_ls', {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+      return
+    end
+
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT'
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+          -- Depending on the usage, you might want to add additional paths here.
+          -- "${3rd}/luv/library"
+          -- "${3rd}/busted/library",
+        }
+        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+        -- library = vim.api.nvim_get_runtime_file("", true)
+      }
+    })
+  end,
+  settings = {
+    Lua = {}
+  }
+})
+
+lsp_zero.configure('tsserver', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "templ" },
+  cmd = { "typescript-language-server", "--stdio" }
+})
+
 lsp_zero.configure('gopls', {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -257,9 +287,11 @@ lsp_zero.configure('tailwindcss', {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "css", "javascript", "typescript", "typescriptreact", "typescript.tsx", "templ" },
-  init_options = {
-    userLanguages = {
-      templ = "html"
+  settings = {
+    tailwindCSS = {
+      includeLanguages = {
+        templ = "html",
+      }
     }
   }
 })

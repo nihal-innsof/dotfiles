@@ -283,8 +283,22 @@ local plugins = {
     end
   },
   -- Golang Debugger
-  {
+  --[[ {
     "leoluz/nvim-dap-go"
+  }, ]]
+  {
+    "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", 'gomod' },
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
   -- Database Management
   {
@@ -354,15 +368,15 @@ local plugins = {
       'nvim-tree/nvim-web-devicons',
     },
   }, ]]
-  -- -- Rest client
-  --[[ {
+  -- Rest client
+  {
     "vhyrro/luarocks.nvim",
     priority = 1000,
     config = true,
     opts = {
       rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
     }
-  }, ]]
+  },
   {
     "rest-nvim/rest.nvim",
     ft = "http",
@@ -393,7 +407,7 @@ local plugins = {
       { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
       { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
       { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+      -- { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
   {
@@ -447,16 +461,12 @@ local plugins = {
     config = true
   },
   -- LOCAL PLUGIN DEVELOPMENT
-  {
-    dir = "~/dev/nvim/personal/myPlugin",
+  --[[ {
+    dir = "~/dev/nvim/personal/n1h41",
     config = function()
-      require('myPlugin').setup()
+      require('n1h41').setup()
     end
-  },
-  {
-    dir = "~/dev/nvim/reference/example.nvim",
-  }
-
+  }, ]]
 }
 
 require('lazy').setup(plugins, {})

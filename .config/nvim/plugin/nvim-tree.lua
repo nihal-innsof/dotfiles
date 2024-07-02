@@ -21,7 +21,7 @@ nvim_tree.setup({
         git = true,
         folder_arrow = true,
       },
-      glyphs = {
+      --[[ glyphs = {
         git = {
           unstaged = "U",
           staged = "S",
@@ -31,7 +31,7 @@ nvim_tree.setup({
           deleted = "D",
           ignored = "I",
         },
-      }
+      } ]]
     }
   },
   diagnostics = {
