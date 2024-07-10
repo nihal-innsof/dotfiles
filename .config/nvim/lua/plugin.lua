@@ -10,7 +10,18 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- 'wbthomason/packer.nvim',
-  { "folke/neodev.nvim",    opts = {} },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   -- LSP
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -24,7 +35,16 @@ local plugins = {
       { 'onsails/lspkind-nvim' },            -- vscode like pictograms
       { 'jose-elias-alvarez/null-ls.nvim' }, -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
+      {
+        'hrsh7th/nvim-cmp',
+        opts = function(_, opts)
+          opts.sources = opts.sources or {}
+          table.insert(opts.sources, {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          })
+        end,
+      },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'saadparwaiz1/cmp_luasnip' },
@@ -246,7 +266,10 @@ local plugins = {
   {
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    dependencies = {
+      { 'juansalvatore/git-dashboard-nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+      { 'nvim-tree/nvim-web-devicons' },
+    }
   },
   -- Flutter
   {
@@ -434,9 +457,14 @@ local plugins = {
   -- Rest client
   {
     "rest-nvim/rest.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
+    ft = "http",
+    dependencies = { "luarocks.nvim" },
+    config = function()
+      require("rest-nvim").setup()
+    end,
   },
   {
+    lazy = false,
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
@@ -452,7 +480,7 @@ local plugins = {
     priority = 1001, -- this plugin needs to run before anything else
     config = true,
     opts = {
-      rocks = { "magick" },
+      rocks = { "magick", --[[ "lua-curl", ]] "nvim-nio", "mimetypes", "xml2lua" },
     },
   },
   {
@@ -482,6 +510,21 @@ local plugins = {
       }
     },
     config = true,
+  },
+  -- Buffer based file manager
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "echasnovski/mini.icons" },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+  -- My Plugins
+  {
+    dir = "~/dev/nvim/n1h41",
+    config = function()
+      require("n1h41").setup()
+    end
   },
 }
 

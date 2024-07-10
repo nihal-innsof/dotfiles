@@ -3,14 +3,10 @@ if (not status) then
   return
 end
 
-local status2, rest = pcall(require, "rest-nvim")
-if (not status2) then
-  return
-end
-
 local keymap = {
   r = {
-    r = { rest.run, "Run last request" },
+    r = { "<cmd>Rest run<CR>", "Run request" },
+    s = { "<cmd>Telescope rest select_env<CR>", "Select env file" },
   }
 }
 

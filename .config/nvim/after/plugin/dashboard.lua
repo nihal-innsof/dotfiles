@@ -4,6 +4,8 @@ if (not status) then
   return
 end
 
+local git_dashboard = require("git-dashboard-nvim").setup({})
+
 dashboard.setup({
   theme = "doom",
   hide = {
@@ -12,7 +14,8 @@ dashboard.setup({
     winbar = true,
   },
   config = {
-    header = {
+    header = git_dashboard,
+    --[[ header = {
       "                                   ",
       "                                   ",
       "                                   ",
@@ -28,7 +31,7 @@ dashboard.setup({
       "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
       "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
       "                                   ",
-    },
+    }, ]]
     center = {
       {
         icon = '󰈞  ',
@@ -44,7 +47,7 @@ dashboard.setup({
         icon_hl = 'group',
         desc = 'Search Text',
         desc_hl = 'group',
-        key = 'd',
+        key = 'b',
         key_hl = 'group',
         action = 'Telescope live_grep',
       },
@@ -53,7 +56,7 @@ dashboard.setup({
         icon_hl = 'group',
         desc = 'Recent Files',
         desc_hl = 'group',
-        key = 'b',
+        key = 'c',
         key_hl = 'group',
         action = 'Telescope oldfiles',
       },

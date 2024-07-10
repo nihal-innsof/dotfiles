@@ -12,6 +12,7 @@ neorg.setup({
           knowledge_base = "~/Documents/knowledge_base/"
         }
       }
-    }
+    },
+    ["core.syntax"] = {},
   }
 })

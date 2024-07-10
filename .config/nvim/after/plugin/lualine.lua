@@ -32,7 +32,8 @@ lualine.setup {
         }
       },
       'encoding',
-      'filetype'
+      'filetype',
+      'rest'
     },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }

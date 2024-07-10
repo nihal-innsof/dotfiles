@@ -62,6 +62,7 @@ alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen
 alias g="git"
 alias tmux="tmux -u"
 alias cat="batcat"
+alias tx="tmuxinator"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -78,6 +79,7 @@ export PATH="$PATH:/home/nihal/go/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
 JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export JAVA_HOME
+export EDITOR="nvim"
 
 # initialise zoxide
 eval "$(zoxide init zsh)"
