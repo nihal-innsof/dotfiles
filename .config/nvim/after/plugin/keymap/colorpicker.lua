@@ -5,7 +5,7 @@ end
 
 local keymap = {
   c = {
-    p = { "<cmd>PickColor<cr>", "Toggle Zen Mode" },
+    p = { "<cmd>PickColor<cr>", "Pick color" },
   }
 }
 
