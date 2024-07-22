@@ -15,6 +15,17 @@ saga.setup({
   lightbulb = {
     enable = false,
     enable_in_insert = false
+  },
+  definition = {
+    keys = {
+      edit = '<C-o>',
+      vsplit = 'sv',
+      split = 'ss',
+      tabe = 't',
+      tabnew = '<C-n>',
+      quit = 'q',
+      close = '<ESC>',
+    }
   }
 })
 

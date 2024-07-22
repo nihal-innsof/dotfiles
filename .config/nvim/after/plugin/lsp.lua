@@ -142,7 +142,7 @@ lsp_zero.capabilities = capabilities
 lsp_zero.configure('tsserver', {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "templ" },
   cmd = { "typescript-language-server", "--stdio" }
 })
 
