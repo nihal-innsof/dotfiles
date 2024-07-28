@@ -31,6 +31,8 @@ ts.setup {
     "rust",
     "c",
     "vimdoc",
+    "vim",
+    "regex",
   },
   autotag = {
     enable = true,

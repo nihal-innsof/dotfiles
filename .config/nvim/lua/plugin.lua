@@ -9,7 +9,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  'wbthomason/packer.nvim',
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
@@ -283,10 +282,22 @@ local plugins = {
     end
   },
   -- Golang Debugger
-  --[[ {
-    "leoluz/nvim-dap-go"
-  }, ]]
   {
+    "leoluz/nvim-dap-go",
+    config = function()
+      require('dap-go').setup({
+        dap_configurations = {
+          {
+            type = "go",
+            name = "Attach remote",
+            mode = "remote",
+            request = "attach",
+          },
+        },
+      })
+    end
+  },
+  --[[ {
     "ray-x/go.nvim",
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
@@ -299,7 +310,7 @@ local plugins = {
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },
+  }, ]]
   -- Database Management
   {
     "tpope/vim-dadbod",
@@ -330,13 +341,13 @@ local plugins = {
     }
   },
   -- Golang extras
-  {
+  --[[ {
     "olexsmir/gopher.nvim",
     dependencies = { -- dependencies
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     }
-  },
+  }, ]]
   -- Neotest
   {
     lazy = true,
@@ -403,10 +414,10 @@ local plugins = {
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       -- { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
