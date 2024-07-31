@@ -65,6 +65,7 @@ alias cat="bat"
 alias lzd="lazydocker"
 alias tx="tmuxinator"
 alias mk="make"
+alias tx="tmux"
 
 
 # source /home/n1h41/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
