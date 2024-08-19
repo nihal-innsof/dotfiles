@@ -63,7 +63,7 @@ alias g="git"
 alias tmux="tmux -u"
 alias cat="bat"
 alias lzd="lazydocker"
-alias tx="tmuxinator"
+alias tr="tmuxinator"
 alias mk="make"
 alias tx="tmux"
 
@@ -89,6 +89,9 @@ export PATH="$PATH:/opt/mssql-tools/bin"
 # cargo installed apps path
 export PATH="$PATH:/home/n1h41/.cargo/bin"
 
+# Android Studio Emulator
+export PATH="$PATH:/home/n1h41/Android/Sdk/emulator"
+
 # initialise zoxide
 eval "$(zoxide init zsh)"
 
@@ -98,4 +101,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 export EDITOR="nvim"
 
-krabby random
+# krabby random
+krabby name kyogre
+
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
