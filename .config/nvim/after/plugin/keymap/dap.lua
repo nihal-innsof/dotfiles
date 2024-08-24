@@ -19,7 +19,7 @@ local keymap = {
     e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
     h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-    -- o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+    o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
     q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
     -- s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
     t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
@@ -68,20 +68,6 @@ local keymap_v = {
 }
 whichkey.register(keymap_v, {
   mode = "v",
-  prefix = "<leader>",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-})
-
-local keymap_w = {
-  name = "Debug",
-  n = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-}
-
-whichkey.register(keymap_w, {
-  mode = "n",
   prefix = "<leader>",
   buffer = nil,
   silent = true,
