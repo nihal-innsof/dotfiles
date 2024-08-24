@@ -57,7 +57,11 @@ bindkey '^ ' autosuggest-accept
 alias cls="clear"
 alias vim="nvim"
 alias lg="lazygit"
-alias ls="eza -la --icons --git -a"
+alias  l='eza -lh  --icons=auto' # long list
+alias ls='eza -1   --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
 alias gt="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
 alias g="git"
 alias tmux="tmux -u"
@@ -102,7 +106,10 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export EDITOR="nvim"
 
 # krabby random
-krabby name kyogre
+# krabby name kyogre
+
+#Display Pokemon
+pokemon-colorscripts --no-title -r 1,3,6
 
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
