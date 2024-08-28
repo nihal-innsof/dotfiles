@@ -80,7 +80,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Update path with flutter binaries
-export PATH="$PATH:/usr/bin/flutter/bin"
+export PATH="$PATH:/home/n1h41/development/flutter/bin"
 export PATH="$PATH:/home/n1h41/Android/Sdk/platform-tools"
 
 # Go path

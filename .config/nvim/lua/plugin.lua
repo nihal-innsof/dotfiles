@@ -531,10 +531,6 @@ local plugins = {
           name = "personal",
           path = "/home/n1h41/Documents/obsidian-vault",
         },
-        {
-          name = "work",
-          path = "~/vaults/work",
-        },
       },
 
       -- see below for full list of options 👇

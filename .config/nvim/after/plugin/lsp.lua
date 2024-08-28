@@ -180,14 +180,14 @@ flutter.setup {
     run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
     exception_breakpoints = { "always" }
   },
-  flutter_path = "/usr/bin/flutter/bin/flutter", -- <-- this takes priority over the lookup
+  flutter_path = "/home/n1h41/development/flutter/bin/flutter",
   fvm = false,                                   -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
   widget_guides = {
     enabled = true,
   },
   dev_log = {
     enabled = true,
-    notify_errors = false, -- if there is an error whilst running then notify the user
+    notify_errors = true, -- if there is an error whilst running then notify the user
     open_cmd = "tabnew",   -- command to use to open the log buffer
   },
   dev_tools = {
@@ -210,11 +210,11 @@ flutter.setup {
     on_attach = on_attach,
     capabilities = capabilities, -- e.g. lsp_status capabilities
     settings = {
-      showTodos = true,
+      showTodos = false,
       completeFunctionCalls = true,
       analysisExcludedFolders = {
         "/home/n1h41/.pub-cache/hosted/",
-        "/home/n1h41/flutter/",
+        "/home/n1h41/development/flutter/",
       },
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,
@@ -228,6 +228,7 @@ local util = require("lspconfig.util")
 lsp_zero.configure('lua_ls', {
   on_init = function(client)
     local path = client.workspace_folders[1].name
+---@diagnostic disable-next-line: undefined-field
     if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
       return
     end
