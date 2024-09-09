@@ -529,7 +529,7 @@ local plugins = {
       workspaces = {
         {
           name = "personal",
-          path = "/home/n1h41/Documents/obsidian-vault",
+          path = "/home/nihal/Obsidian-vault",
         },
       },
 
@@ -539,17 +539,17 @@ local plugins = {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   },
   -- LOCAL PLUGIN DEVELOPMENT
-  --[[ {
-    dir = "~/dev/nvim/personal/n1h41",
+  {
+    dir = "/home/nihal/dev/nvim/n1h41",
     config = function()
       require('n1h41').setup()
     end
-  }, ]]
+  },
 }
 
 require('lazy').setup(plugins, {})

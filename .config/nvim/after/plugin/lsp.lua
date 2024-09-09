@@ -180,7 +180,7 @@ flutter.setup {
     run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
     exception_breakpoints = { "always" }
   },
-  flutter_path = "/home/n1h41/development/flutter/bin/flutter",
+  flutter_path = "/home/nihal/flutter/bin/flutter",
   fvm = false,                                   -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
   widget_guides = {
     enabled = true,
@@ -213,8 +213,8 @@ flutter.setup {
       showTodos = false,
       completeFunctionCalls = true,
       analysisExcludedFolders = {
-        "/home/n1h41/.pub-cache/hosted/",
-        "/home/n1h41/development/flutter/",
+        "/home/nihal/.pub-cache/hosted/",
+        "/home/nihal/flutter/",
       },
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,

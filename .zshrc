@@ -80,8 +80,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Update path with flutter binaries
-export PATH="$PATH:/home/n1h41/development/flutter/bin"
-export PATH="$PATH:/home/n1h41/Android/Sdk/platform-tools"
+export PATH="/home/nihal/flutter/bin:$PATH"
+export PATH="$PATH:/home/nihal/Android/Sdk/platform-tools"
 
 # Go path
 export PATH="$PATH:/usr/local/go/bin"
@@ -98,6 +98,9 @@ export PATH="$PATH:/home/n1h41/Android/Sdk/emulator"
 
 # initialise zoxide
 eval "$(zoxide init zsh)"
+
+# initialise keychain
+eval $(keychain --eval --quiet ~/.ssh/innsof-git)
 
 source <(fzf --zsh)
 
