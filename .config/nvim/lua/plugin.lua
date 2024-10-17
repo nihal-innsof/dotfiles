@@ -53,7 +53,8 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate"
+    build = ":TSUpdate",
+    lazy = false
   },
   "nvim-treesitter/nvim-treesitter-context",
   -- Nice to haves
@@ -71,7 +72,6 @@ local plugins = {
     'stevearc/dressing.nvim',
   },
   {
-    enabled = false,
     "github/copilot.vim",
   },
   "j-hui/fidget.nvim",
@@ -266,6 +266,7 @@ local plugins = {
   -- Flutter
   {
     'akinsho/flutter-tools.nvim',
+    commit = "5aa227fa083fd740184b55b5220dfabc24a25cc7",
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -300,7 +301,7 @@ local plugins = {
       })
     end
   },
-  --[[ {
+  {
     "ray-x/go.nvim",
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
@@ -313,7 +314,7 @@ local plugins = {
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  }, ]]
+  },
   -- Database Management
   {
     "tpope/vim-dadbod",
@@ -552,6 +553,9 @@ local plugins = {
     config = function()
       require('n1h41').setup()
     end
+  },
+  {
+    'arnamak/stay-centered.nvim'
   },
 }
 

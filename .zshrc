@@ -17,7 +17,7 @@ setopt autocd notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/n1h41/.zshrc'
+zstyle :compinstall filename '/home/nihal/.zshrc'
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -72,7 +72,7 @@ alias mk="make"
 alias tx="tmux"
 
 
-# source /home/n1h41/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /home/nihal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -87,19 +87,19 @@ export PATH="$PATH:/home/nihal/Android/Sdk/platform-tools"
 export PATH="$PATH:/usr/local/go/bin"
 
 # Go executables path
-export PATH="$PATH:/home/n1h41/go/bin"
+export PATH="$PATH:/home/nihal/go/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
 
 # cargo installed apps path
-export PATH="$PATH:/home/n1h41/.cargo/bin"
+export PATH="$PATH:/home/nihal/.cargo/bin"
 
 # Android Studio Emulator
-export PATH="$PATH:/home/n1h41/Android/Sdk/emulator"
+export PATH="$PATH:/home/nihal/Android/Sdk/emulator"
 
 # initialise zoxide
 eval "$(zoxide init zsh)"
 
-# initialise keychain
+# Initialise keychain
 eval $(keychain --eval --quiet ~/.ssh/innsof-git)
 
 source <(fzf --zsh)
@@ -112,7 +112,8 @@ export EDITOR="nvim"
 # krabby name kyogre
 
 #Display Pokemon
-pokemon-colorscripts --no-title -r 1,3,6
+# pokemon-colorscripts --no-title -r 1,3,6
+pokemon-colorscripts --no-title -n charmander -b
 
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc

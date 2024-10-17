@@ -176,7 +176,7 @@ flutter.setup {
   },
 
   debugger = {          -- integrate with nvim dap + install dart code debugger
-    enabled = false,
+    enabled = true,
     run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
     exception_breakpoints = { "always" }
   },

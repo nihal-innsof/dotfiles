@@ -26,7 +26,7 @@ ts.setup {
     "html",
     "css",
     "c_sharp",
-    "http",
+    -- "http",
     "json",
     "rust",
     "c",
