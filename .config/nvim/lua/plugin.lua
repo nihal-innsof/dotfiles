@@ -547,6 +547,7 @@ local plugins = {
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   },
+  { 'nvim-java/nvim-java' },
   -- LOCAL PLUGIN DEVELOPMENT
   {
     dir = "/home/nihal/dev/nvim/n1h41",
