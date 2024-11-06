@@ -533,7 +533,7 @@ local plugins = {
       workspaces = {
         {
           name = "personal",
-          path = "/home/nihal/Obsidian-vault",
+          path = "/home/nihal/Documents/obsidian-vault/",
         },
       },
 
