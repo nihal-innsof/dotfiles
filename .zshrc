@@ -70,6 +70,7 @@ alias lzd="lazydocker"
 alias tr="tmuxinator"
 alias mk="make"
 alias tx="tmux"
+alias tp="typer -m"
 
 
 # source /home/nihal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -94,7 +95,7 @@ export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:/home/nihal/.cargo/bin"
 
 # Android Studio Emulator
-export PATH="$PATH:/home/nihal/Android/Sdk/emulator"
+export PATH="$PATH:/home/nihal/Android/Sdk/emulator:/home/nihal/.local/share/gem/ruby/3.3.0/bin"
 
 # initialise zoxide
 eval "$(zoxide init zsh)"
@@ -108,12 +109,14 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 export EDITOR="nvim"
 
+export FLUTTER_ROOT="/home/nihal/flutter"
+
 # krabby random
 # krabby name kyogre
 
 #Display Pokemon
-# pokemon-colorscripts --no-title -r 1,3,6
-pokemon-colorscripts --no-title -n charmander -b
+pokemon-colorscripts --no-title -r 1,3,6
+# pokemon-colorscripts --no-title -n charmander -b
 
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
