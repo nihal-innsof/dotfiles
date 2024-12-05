@@ -181,14 +181,14 @@ flutter.setup {
     exception_breakpoints = { "always" }
   },
   flutter_path = "/home/nihal/flutter/bin/flutter",
-  fvm = false,                                   -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+  fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
   widget_guides = {
     enabled = true,
   },
   dev_log = {
     enabled = true,
     notify_errors = true, -- if there is an error whilst running then notify the user
-    open_cmd = "tabnew",   -- command to use to open the log buffer
+    open_cmd = "tabnew",  -- command to use to open the log buffer
   },
   dev_tools = {
     autostart = true,          -- autostart devtools server if not detected
@@ -228,7 +228,7 @@ local util = require("lspconfig.util")
 lsp_zero.configure('lua_ls', {
   on_init = function(client)
     local path = client.workspace_folders[1].name
----@diagnostic disable-next-line: undefined-field
+    ---@diagnostic disable-next-line: undefined-field
     if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
       return
     end
@@ -301,6 +301,27 @@ lsp_zero.configure('emmet_language_server', {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "templ" },
+})
+
+lsp_zero.configure('clangd', {
+  cmd = {
+    "clangd",
+    "--header-insertion=never",
+    -- "-j",
+    -- nproc,
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+    "--rename-file-limit=0",
+    "--background-index",
+    "--background-index-priority=normal",
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+})
+
+lsp_zero.configure('sql', {
+  on_attach = function(client, _)
+    client.server_capabilities.documentFormattingProvider = false
+  end,
 })
 
 lsp_zero.setup()
