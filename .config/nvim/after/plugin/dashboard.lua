@@ -5,7 +5,7 @@ if (not status) then
 end
 
 ---@diagnostic disable-next-line: missing-fields
-local git_dashboard = require('git-dashboard-nvim').setup {}
+-- local git_dashboard = require('git-dashboard-nvim').setup {}
 
 -- INFO: Code to add image to dashboard
 
@@ -33,8 +33,8 @@ dashboard.setup({
     winbar = true,
   },
   config = {
-    header = git_dashboard,
-    --[[ header = {
+    -- header = git_dashboard,
+    header = {
       "                                   ",
       "                                   ",
       "                                   ",
@@ -50,7 +50,7 @@ dashboard.setup({
       "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
       "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
       "                                   ",
-    }, ]]
+    },
     center = {
       {
         icon = '󰈞  ',

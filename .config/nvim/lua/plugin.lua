@@ -9,6 +9,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  rocks = {
+    hererocks = true
+  },
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
@@ -71,7 +74,7 @@ local plugins = {
     'stevearc/dressing.nvim',
   },
   {
-    enabled = false,
+    enabled = true,
     "github/copilot.vim",
   },
   "j-hui/fidget.nvim",
@@ -383,18 +386,18 @@ local plugins = {
     },
   }, ]]
   -- Rest client
-  {
+  --[[ {
     "vhyrro/luarocks.nvim",
     priority = 1000,
     config = true,
     opts = {
-      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua", "magick" }
     }
-  },
-  {
+  }, ]]
+  --[[ {
     "rest-nvim/rest.nvim",
     ft = "http",
-  },
+  }, ]]
   {
     "ziontee113/color-picker.nvim",
   },
@@ -407,7 +410,7 @@ local plugins = {
     end
   },
   { "nvim-neotest/nvim-nio" },
-  {
+  --[[ {
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
@@ -423,7 +426,7 @@ local plugins = {
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       -- { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
-  },
+  }, ]]
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -443,13 +446,13 @@ local plugins = {
   {
     "nvim-neorg/neorg",
   },
-  {
+  --[[ {
     "vhyrro/luarocks.nvim",
     priority = 1001, -- this plugin needs to run before anything else
     opts = {
       rocks = { "magick" },
     },
-  },
+  }, ]]
   {
     "3rd/image.nvim",
     opts = {
@@ -539,12 +542,55 @@ local plugins = {
       -- see below for full list of options 👇
     },
   },
+  --[[ {
+    "OXY2DEV/markview.nvim",
+    lazy = false, -- Recommended
+    -- ft = "markdown" -- If you decide to lazy-load anyway
+
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    }
+  }, ]]
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  },
+  {
+    "rest-nvim/rest.nvim",
+  },
+  -- Custom Parameters (with defaults)
+  {
+    "David-Kunz/gen.nvim",
+    opts = {
+      model = "llama3.2",     -- The default model to use.
+      quit_map = "q",         -- set keymap to close the response window
+      retry_map = "<c-r>",    -- set keymap to re-send the current prompt
+      accept_map = "<c-cr>",  -- set keymap to replace the previous selection with the last result
+      host = "localhost",     -- The host running the Ollama service.
+      port = "11434",         -- The port on which the Ollama service is listening.
+      display_mode = "split", -- The display mode. Can be "float" or "split" or "horizontal-split".
+      show_prompt = true,     -- Shows the prompt submitted to Ollama.
+      show_model = true,      -- Displays which model you are using at the beginning of your chat session.
+      no_auto_close = true,   -- Never closes the window automatically.
+      file = false,           -- Write the payload to a temporary file to keep the command short.
+      hidden = false,         -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+      init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+      -- Function to initialize Ollama
+      command = function(options)
+        local body = { model = options.model, stream = true }
+        return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
+      end,
+      -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+      -- This can also be a command string.
+      -- The executed command must return a JSON object with { response, context }
+      -- (context property is optional).
+      -- list_models = '<omitted lua function>', -- Retrieves a list of model names
+      debug = false -- Prints errors and the command which is run.
+    }
   },
   -- LOCAL PLUGIN DEVELOPMENT
   {
