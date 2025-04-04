@@ -95,7 +95,7 @@ vim.filetype.add({ extension = { templ = "templ" } })
 
 -- Vimtex (Latex)
 vim.cmd([[filetype plugin indent on]])
-vim.cmd([[syntax enable]])
+-- vim.cmd([[syntax enable]])
 
 vim.g.vimtex_compiler_enabled = true
 vim.cmd([[let g:tex_flavor = 'latex']])
@@ -106,6 +106,9 @@ vim.cmd([[let g:vimtex_view_general_viewer = 'zathura']])
 vim.cmd([[let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex']])
 
 vim.cmd([[let g:vimtex_compiler_method = 'latexmk']])
+
+vim.cmd([[let maplocalleader = ',']])
+
 
 -- Hyprlang LSP
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
@@ -136,8 +139,8 @@ end
 local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
 
 for name, icon in pairs(symbols) do
-	local hl = "DiagnosticSign" .. name
-	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+  local hl = "DiagnosticSign" .. name
+  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 vim.g.rest_nvim = {}

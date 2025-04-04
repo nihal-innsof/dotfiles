@@ -407,6 +407,7 @@ local plugins = {
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here
+      -- vim.g.vimtex_view_method = "zathura"
     end
   },
   { "nvim-neotest/nvim-nio" },
@@ -591,6 +592,42 @@ local plugins = {
       -- list_models = '<omitted lua function>', -- Retrieves a list of model names
       debug = false -- Prints errors and the command which is run.
     }
+  },
+  {
+    "kndndrj/nvim-dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup( --[[optional config]])
+    end,
+  },
+  {
+    'anurag3301/nvim-platformio.lua',
+    requires = {
+      { 'akinsho/nvim-toggleterm.lua' },
+      { 'nvim-telescope/telescope.nvim' },
+      { 'nvim-lua/plenary.nvim' },
+    }
+  },
+  {
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      dependencies = {
+        { "github/copilot.vim" },                     -- or zbirenbaum/copilot.lua
+        { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+      },
+      build = "make tiktoken",                        -- Only on MacOS or Linux
+      --[[ opts = {
+      }, ]]
+      -- See Commands section for default commands if you want to lazy load on them
+    },
   },
   -- LOCAL PLUGIN DEVELOPMENT
   {
