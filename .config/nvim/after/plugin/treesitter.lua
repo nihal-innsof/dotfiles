@@ -31,6 +31,8 @@ ts.setup {
     "json",
     "rust",
     "c",
+    "cpp",
+    "dart",
     "vimdoc",
     "vim",
     "regex",

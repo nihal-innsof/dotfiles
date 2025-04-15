@@ -6,8 +6,7 @@ end
 
 lsp_zero.preset('recommended')
 
-lsp_zero.ensure_installed({ 'tsserver', 'lua_ls', "gopls", "html", "emmet_language_server", "tailwindcss",
-  "htmx", "templ" })
+lsp_zero.ensure_installed({ 'lua_ls', "gopls", "html", "emmet_language_server", "tailwindcss", "htmx", "templ"})
 
 local cmp = require('cmp')
 
@@ -308,9 +307,28 @@ lsp_zero.configure("clangd", {
   capabilities = capabilities,
   filetypes = { "c", "cpp", "objc", "objcpp", "h" },
   -- cmd = { "/home/nihal/.espressif/tools/esp-clang/esp-18.1.2_20240912/esp-clang/bin/clangd", "--background-index", "--query-driver=**", }
-  cmd = { "/home/nihal/tools/lsp/esp-clang/bin/clangd", "--background-index", "--query-driver=**", "--offset-encoding=utf-16", }
+  -- cmd = { "/home/nihal/tools/lsp/esp-clang/bin/clangd", "--background-index", "--query-driver=**", "--offset-encoding=utf-16", }
+  cmd = { "/home/nihal/tools/esp-clang/bin/clangd", "--background-index", "--query-driver=**", "--offset-encoding=utf-16", }
 })
+
+--[[ require('ccls').setup({
+  filetypes = { "c", "cpp", "objc", "objcpp", "h" },
+  lsp = {
+    use_defaults = true,
+    codelens = {
+      enable = true,
+      events = { "BufWritePost", "InsertLeave" }
+    }
+  }
+})
+
+lsp_zero.configure("ccls", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "c", "cpp", "objc", "objcpp", "h" },
+  cmd = { "/usr/bin/ccls", "--background-index", "--query-driver=**", "--offset-encoding=utf-16", }
+}) ]]
 
 lsp_zero.setup()
 
-require("fidget").setup({})
+-- require("fidget").setup({})

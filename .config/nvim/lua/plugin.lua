@@ -363,6 +363,7 @@ local plugins = {
       "antoinemadec/FixCursorHold.nvim",
       'sidlatau/neotest-dart',
       "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-plenary",
     }
   },
   -- DiffView
@@ -554,6 +555,7 @@ local plugins = {
     }
   }, ]]
   {
+    -- lazy = true,
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
@@ -615,6 +617,9 @@ local plugins = {
       { 'nvim-telescope/telescope.nvim' },
       { 'nvim-lua/plenary.nvim' },
     }
+  },
+  {
+    "ranjithshegde/ccls.nvim",
   },
   {
     {
