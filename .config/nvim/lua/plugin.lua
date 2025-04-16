@@ -610,6 +610,9 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    init = function ()
+      require("user.lualine.codecompanion_fidget_spinner"):init()
+    end
   },
   -- LOCAL PLUGIN DEVELOPMENT
   {
