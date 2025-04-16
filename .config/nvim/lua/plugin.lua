@@ -610,9 +610,15 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    init = function ()
+    init = function()
       require("user.lualine.codecompanion_fidget_spinner"):init()
     end
+  },
+  {
+    "Davidyz/VectorCode",
+    version = "*",                     -- optional, depending on whether you're on nightly or release
+    build = "pipx upgrade vectorcode", -- optional but recommended if you set `version = "*"`
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
   -- LOCAL PLUGIN DEVELOPMENT
   {
