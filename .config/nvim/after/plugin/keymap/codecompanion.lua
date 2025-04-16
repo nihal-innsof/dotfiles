@@ -3,13 +3,15 @@ if (not status) then
   return
 end
 
-if not package.loaded["CopilotChat"] then
+if not package.loaded["codecompanion"] then
   return
 end
 
 local keymap = {
   c = {
-    c = { "<cmd>CopilotChatToggle<CR>", "Open Copilot Chat" },
+    c = { "<cmd>CodeCompanionChat<CR>", "Open AI Chat" },
+    t = { "<cmd>CodeCompanionActions<CR>", "AI Actions" },
+    x = { "<cmd>CodeCompanionCmd<CR>", "Generate command line commands" },
   }
 }
 
