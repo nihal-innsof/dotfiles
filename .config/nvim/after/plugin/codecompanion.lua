@@ -11,6 +11,12 @@ codecompanion.setup({
         codebase = require("vectorcode.integrations").codecompanion.chat.make_slash_command(),
       },
       tools = {
+        ["mcp"] = {
+          callback = function()
+            return require("mcphub.extensions.codecompanion")
+          end,
+          description = "Call tools and resources from the MCP server"
+        },
         vectorcode = {
           description = "Run VectorCode to retrieve the project context.",
           callback = require("vectorcode.integrations").codecompanion.chat.make_tool(),

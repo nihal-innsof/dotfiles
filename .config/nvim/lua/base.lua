@@ -144,3 +144,5 @@ for name, icon in pairs(symbols) do
 end
 
 vim.g.rest_nvim = {}
+
+vim.g.codecompanion_auto_tool_mode = true

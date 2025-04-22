@@ -28,6 +28,7 @@ lualine.setup {
       path = 0            -- 0 = just filename, 1 = relative path, 2 = absolute path
     } },
     lualine_x = {
+      { require("mcphub.extensions.lualine") },
       {
         'diagnostics',
         sources = { "nvim_diagnostic" },

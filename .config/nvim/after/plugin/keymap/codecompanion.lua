@@ -11,17 +11,14 @@ end
 
 -- Setup which-key mappings for CodeCompanion plugin
 wk.add({
-  -- Normal mode mappings
   { "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Open AI Chat",                   mode = "n" },
-  { "<leader>ct", "<cmd>CodeCompanionChat Toggle<CR>",     desc = "AI Actions",                     mode = "n" },
-  { "<C-c>", "<cmd>CodeCompanionActions<CR>",     desc = "AI Actions",                     mode = "n" },
-  { "<leader>cx", "<cmd>CodeCompanionCmd <CR>",         desc = "Generate command line commands", mode = "n" },
-
-  -- Visual mode mappings
-  { "<leader>cc", "<cmd>'<,'>CodeCompanion<CR>",       desc = "Inline Refactor",                mode = "v" },
+  { "<leader>ct", "<cmd>CodeCompanionChat Toggle<CR>", desc = "Toggle AI Chat",                 mode = "n" },
+  { "<C-c>",      "<cmd>CodeCompanionActions<CR>",     desc = "AI Actions",                     mode = "n" },
+  { "<leader>cx", "<cmd>CodeCompanionCmd<CR>",         desc = "Generate command line commands", mode = "n" },
+  { "<leader>cc", "<cmd>'<,'>CodeCompanion <CR>",      desc = "Inline Refactor",                mode = "v" },
 }, {
   silent = true,  -- Don't echo commands
   noremap = true, -- Non-recursive mapping
   nowait = false, -- Wait for additional keypresses
-  buffer = nil,   -- Apply to all buffers
+  -- buffer = nil,   -- Apply to all buffers
 })
