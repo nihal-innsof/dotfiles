@@ -1,19 +1,19 @@
-local status, whichKey = pcall(require, "which-key")
+local status, wk = pcall(require, "which-key")
 if not status then
   return
 end
 
-local keymap = {
-  r = {
-    r = { "<cmd>Rest run<cr>", "Run request" }
-  }
-}
+-- Using the new which-key API format for v3
+wk.add({
+  -- Define group name
+  { "<leader>r",  group = "REST" },
 
-whichKey.register(keymap, {
-  prefix = '<leader>',
+  -- REST command
+  { "<leader>rr", "<cmd>Rest run<cr>", desc = "Run request" },
+}, {
   mode = 'n',
-  buffer = nil,
   silent = true,
   noremap = true,
   nowait = true,
 })
+

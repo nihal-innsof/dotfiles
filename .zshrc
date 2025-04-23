@@ -124,6 +124,7 @@ fpath+=~/.zfunc
 
 
 
+
 # --httptoolkit--
 # This section will be reset each time a HTTP Toolkit terminal is opened
 if [ -n "$HTTP_TOOLKIT_ACTIVE" ]; then

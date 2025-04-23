@@ -1,20 +1,20 @@
-local status, whichKey = pcall(require, "which-key")
+local status, wk = pcall(require, "which-key")
 if not status then
   return
 end
 
-local keymap = {
-  p = {
-    r = { "<cmd>Piorun<cr>", "PlatformIO Run" },
-    m = { "<cmd>Piomon<cr>", "PlatformIO Monitor" },
-  }
-}
+-- Using the new which-key API format for v3
+wk.add({
+  -- Define group name
+  { "<leader>p",  group = "PlatformIO" },
 
-whichKey.register(keymap, {
-  prefix = '<leader>',
+  -- PlatformIO commands
+  { "<leader>pr", "<cmd>Piorun<cr>",   desc = "PlatformIO Run" },
+  { "<leader>pm", "<cmd>Piomon<cr>",   desc = "PlatformIO Monitor" },
+}, {
   mode = 'n',
-  buffer = nil,
   silent = true,
   noremap = true,
   nowait = true,
 })
+
