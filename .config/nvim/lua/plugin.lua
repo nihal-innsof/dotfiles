@@ -646,6 +646,7 @@ local plugins = {
       require("mcphub").setup()
     end, ]]
   },
+  { 'vuciv/golf' },
   -- LOCAL PLUGIN DEVELOPMENT
   {
     dir = "/home/nihal/dev/nvim/n1h41",

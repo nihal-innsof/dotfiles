@@ -53,17 +53,18 @@ I need you to perform code refactoring across several Dart files in my Flutter p
 
 1. Replace all instances of `Dimens.constPadding` with `ISizes.md`
 2. Replace all instances of `Dimens.constWidth` with:
-```dart
+<code>dart
 const SizedBox(
   width: ISizes.md,
 )
-```
+</code>
+
 3. Replace all instances of `Dimens.constHeight` with:
-```dart
+<code>dart
 const SizedBox(
   height: ISizes.md,
 )
-```
+</code>
 
 For each buffer I share with you, please:
 1. Scan the entire file for these patterns
@@ -106,8 +107,8 @@ local theme_migration_content = function()
 I need help transitioning our app's styling approach from using direct AppTextStyles references to using Flutter's ThemeData with extensions. Here's my specific request:
 
 1. Please analyze two files:
-   - `/home/nihal/dev/flutter/works/raf-pharmacy/lib/resources/app_textstyles.dart` (our current styling approach)
-   - `/home/nihal/dev/flutter/works/innsof_ecommerce/lib/utils/theme/widget_themes/text_theme.dart` (the theme implementation we want to use)
+   - '/home/nihal/dev/flutter/works/raf-pharmacy/lib/resources/app_textstyles.dart' (our current styling approach)
+   - '/home/nihal/dev/flutter/works/innsof_ecommerce/lib/utils/theme/widget_themes/text_theme.dart' (the theme implementation we want to use)
 
 2. Once you've analyzed them, I need you to convert text style references in our UI files (buffers I'll share) from using the AppTextStyles approach to using the context.textTheme extension method.
 
@@ -128,8 +129,8 @@ end
 -- File analysis request content
 local theme_files_analysis_content = function()
   return [[Please use the @mcp tool to analyze these two files:
-1. `/home/nihal/dev/flutter/works/raf-pharmacy/lib/resources/app_textstyles.dart`
-2. `/home/nihal/dev/flutter/works/innsof_ecommerce/lib/utils/theme/widget_themes/text_theme.dart`
+1. '/home/nihal/dev/flutter/works/raf-pharmacy/lib/resources/app_textstyles.dart'
+2. '/home/nihal/dev/flutter/works/innsof_ecommerce/lib/utils/theme/widget_themes/text_theme.dart'
 
 Provide a mapping between the styles in AppTextStyles and the equivalent in the textTheme extension approach, explaining how you'll transform them.]]
 end
@@ -276,6 +277,151 @@ local theme_migration_workflow = create_workflow(
 )
 
 --------------------------------------------------------
+-- Clean Architecture Migration content
+local clean_arch_migration_content = function()
+  return [[### Flutter Clean Architecture Migration
+
+I need your help converting an existing Flutter project to follow clean architecture principles. Here are the details:
+
+Source Project: `/home/nihal/dev/flutter/works/raf-pharmacy`
+Target Structure: Based on `/home/nihal/dev/flutter/works/innsof_ecommerce` (clean architecture)
+
+Please follow these steps:
+
+1. First, analyze both projects to understand:
+   - The current architecture of raf-pharmacy
+   - The clean architecture implementation in innsof_ecommerce
+   - Key features/modules that need to be migrated
+
+2. Propose a migration strategy:
+   - Feature-by-feature conversion plan
+   - Mapping of existing components to clean architecture layers
+   - Prioritization of features to migrate
+
+3. For each feature we migrate:
+   - Analyze the existing feature implementation
+   - Create appropriate directories/files following clean architecture
+   - Implement the domain layer (entities, repositories, usecases)
+   - Implement the data layer (models, repositories, datasources)
+   - Implement the presentation layer (controllers/blocs, pages, widgets)
+   - Ensure proper dependency injection
+   - Add appropriate tests
+
+4. Use these tools during the process:
+   - @mcp: For file analysis and codebase exploration
+   - @editor: For modifying buffer content
+   - @files: For creating new files and directories
+
+Let's start with a thorough analysis of both projects to create our migration plan.]]
+end
+
+-- Project analysis content
+local project_analysis_content = function()
+  return [[Please use the @mcp tool to analyze both projects:
+
+1. First, explore the structure of the source project:
+   'find /home/nihal/dev/flutter/works/raf-pharmacy -type f -name "*.dart" | sort' 
+
+2. Then, explore the structure of the clean architecture project:
+   'find /home/nihal/dev/flutter/works/innsof_ecommerce -type f -name "*.dart" | sort'
+
+3. Identify the key features in the source project
+4. Analyze how features are structured in the clean architecture project
+5. Create a comprehensive mapping between the two architectures and propose a detailed migration plan]]
+end
+
+-- Feature migration content (persistent for each feature)
+local feature_migration_content = function()
+  return [[Let's analyze the #feature{watch} feature:
+
+1. Examine the current implementation in the source project
+2. Plan how this feature would be structured in clean architecture:
+   - Domain layer (entities, repositories, usecases)
+   - Data layer (models, repositories, datasources)
+   - Presentation layer (controllers/blocs, pages, widgets)
+   - Required dependency injection changes
+
+Only implement migration when i ask you to do so. I will specify which feature to start migrating and what part of it. Do not proceed with the migration until I give you the go-ahead.]]
+end
+
+-- Clean Architecture Migration workflow
+local clean_arch_workflow = create_workflow(
+  "Migrate Flutter project to Clean Architecture",
+  53,
+  "cleanarchmigration",
+  {
+    {
+      -- Initial setup with system instructions
+      create_system_message(
+        "You are a Flutter architecture expert with deep knowledge of clean architecture principles, design patterns, and refactoring techniques. You'll help the user migrate their Flutter application from a standard architecture to a properly structured clean architecture implementation."
+      ),
+      {
+        role = "user",
+        content = with_auto_tool_mode(clean_arch_migration_content),
+        opts = {
+          auto_submit = true,
+        },
+      },
+    },
+    {
+      -- Project analysis phase
+      {
+        role = "user",
+        content = project_analysis_content,
+        opts = {
+          auto_submit = true,
+        },
+      },
+    },
+    {
+      -- Migration plan proposal
+      {
+        role = "user",
+        content =
+        "Based on your analysis, please provide a detailed feature-by-feature migration plan. Include which files will need to be created for each feature and how we should map existing code to the clean architecture structure.",
+        opts = {
+          auto_submit = true,
+        },
+      },
+    },
+    {
+      -- Feature migration process (persistent)
+      {
+        role = "user",
+        content = feature_migration_content,
+        -- type = "persistent", -- This makes the prompt stay active
+        opts = {
+          auto_submit = true,
+        },
+      },
+    },
+    --[[ {
+      -- Migration verification (persistent)
+      {
+        role = "user",
+        content =
+        "Please verify that the #feature{watch} feature now follows clean architecture principles. Ensure we've properly implemented all layers and dependency injection. What tests should we add to verify the functionality?",
+        -- type = "persistent",
+        opts = {
+          auto_submit = false,
+        },
+      },
+    }, ]]
+    --[[ {
+      -- Migration summary
+      {
+        role = "user",
+        content =
+        "Please provide a summary of all the features we've migrated so far, what remains to be done, and any improvements we should make to the overall architecture.",
+        opts = {
+          auto_submit = false,
+        },
+      },
+    }, ]]
+  }
+)
+
+--------------------------------------------------------
 -- Setup codecompanion
 --------------------------------------------------------
 
@@ -284,6 +430,7 @@ codecompanion.setup({
     ["Innsof Project Refactoring Workflow --> Convert Dimens to ISizes"] = dart_refactor_workflow,
     ["Flutter Format Workflow"] = flutter_format_workflow,
     ["Innsof Theme Migration Workflow"] = theme_migration_workflow,
+    ["Flutter Clean Architecture Migration"] = clean_arch_workflow,
   },
   strategies = {
     chat = {
