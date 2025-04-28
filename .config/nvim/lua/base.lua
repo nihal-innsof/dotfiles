@@ -146,3 +146,4 @@ end
 vim.g.rest_nvim = {}
 
 vim.g.codecompanion_auto_tool_mode = true
+vim.g.mcphub_auto_approve = true

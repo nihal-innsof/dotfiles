@@ -127,7 +127,7 @@ end
 
 -- File analysis request content
 local theme_files_analysis_content = function()
-  return [[Please use the @files tool to analyze these two files:
+  return [[Please use the @mcp tool to analyze these two files:
 1. `/home/nihal/dev/flutter/works/raf-pharmacy/lib/resources/app_textstyles.dart`
 2. `/home/nihal/dev/flutter/works/innsof_ecommerce/lib/utils/theme/widget_themes/text_theme.dart`
 
@@ -162,9 +162,9 @@ local dart_refactor_workflow = create_workflow(
       {
         role = "user",
         content = "Now please analyze and refactor the code in #buffer{watch} using the @editor tool.",
-        type = "persistent", -- This makes the prompt stay active
+        -- type = "persistent", -- This makes the prompt stay active
         opts = {
-          auto_submit = false,
+          auto_submit = true,
         },
       },
     },
@@ -201,7 +201,7 @@ local flutter_format_workflow = create_workflow(
               filetype .. " file. Please provide a brief explanation of the formatting changes you've made."
         end,
         opts = {
-          auto_submit = false,
+          auto_submit = true,
         },
       },
     },
@@ -256,7 +256,7 @@ local theme_migration_workflow = create_workflow(
         "Now please analyze the code in #buffer{watch} and convert all AppTextStyles references to use context.textTheme with the appropriate extension methods. Use the @editor tool to update the buffer with the changes. Explain the transformations you've made.",
         -- type = "persistent", -- This makes the prompt stay active
         opts = {
-          auto_submit = false,
+          auto_submit = true,
         },
       },
     },

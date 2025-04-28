@@ -37,7 +37,7 @@ wk.add({
     "dq",
     "<cmd>DiffviewClose<cr>",
     desc = "Close Diffview",
-    cond = function() return is_diffview_open() end
+    -- cond = function() return is_diffview_open() end
   },
   { "<leader>th", "<cmd>DiffviewFileHistory<cr>",   desc = "Toggle all File History" },
   { "<leader>fh", "<cmd>DiffviewFileHistory %<cr>", desc = "Current File History" },
@@ -47,4 +47,3 @@ wk.add({
   noremap = true,
   nowait = false,
 })
-
