@@ -6,7 +6,7 @@ end
 
 lsp_zero.preset('recommended')
 
-lsp_zero.ensure_installed({ 'lua_ls', "gopls", "html", "emmet_language_server", "tailwindcss", "htmx", "templ"})
+lsp_zero.ensure_installed({ 'lua_ls', "gopls", "html", "emmet_language_server", "tailwindcss", "htmx", "templ" })
 
 local cmp = require('cmp')
 
@@ -177,7 +177,7 @@ flutter.setup {
   debugger = {          -- integrate with nvim dap + install dart code debugger
     enabled = false,
     run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
-    exception_breakpoints = { "always" }
+    exception_breakpoints = { "all" }
   },
   flutter_path = "/home/nihal/flutter/bin/flutter",
   fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
