@@ -85,6 +85,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+-- Disable signcolumn for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = 'markdown',
+  callback = function()
+    vim.wo.signcolumn = "no"
+  end
+})
+
 -- octo
 vim.g.octo_viewer = "n1h41"
 

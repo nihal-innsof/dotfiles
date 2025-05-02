@@ -310,9 +310,7 @@ Please follow these steps:
 4. Use these tools during the process:
    - @mcp: For file analysis and codebase exploration
    - @editor: For modifying buffer content
-   - @files: For creating new files and directories
-
-Let's start with a thorough analysis of both projects to create our migration plan.]]
+   - @files: For creating new files and directories]]
 end
 
 -- Project analysis content
@@ -320,7 +318,7 @@ local project_analysis_content = function()
   return [[Please use the @mcp tool to analyze both projects:
 
 1. First, explore the structure of the source project:
-   'find /home/nihal/dev/flutter/works/raf-pharmacy -type f -name "*.dart" | sort' 
+   'find /home/nihal/dev/flutter/works/raf-pharmacy -type f -name "*.dart" | sort'
 
 2. Then, explore the structure of the clean architecture project:
    'find /home/nihal/dev/flutter/works/innsof_ecommerce -type f -name "*.dart" | sort'
@@ -345,6 +343,7 @@ Only implement migration when i ask you to do so. I will specify which feature t
 end
 
 -- Clean Architecture Migration workflow
+---@diagnostic disable-next-line: unused-local
 local clean_arch_workflow = create_workflow(
   "Migrate Flutter project to Clean Architecture",
   53,
@@ -353,7 +352,7 @@ local clean_arch_workflow = create_workflow(
     {
       -- Initial setup with system instructions
       create_system_message(
-        "You are a Flutter architecture expert with deep knowledge of clean architecture principles, design patterns, and refactoring techniques. You'll help the user migrate their Flutter application from a standard architecture to a properly structured clean architecture implementation."
+        "You are a Flutter architecture expert with deep knowledge of clean architecture principles, design patterns, and refactoring techniques. You'll help the user migrate their Flutter application from a standard architecture to a properly structured clean architecture implementation. Only analyze feature which the user specifies. And do not implement any migration until the user explicitly asks you to do so and do not implement a feature in it's entirety in one go."
       ),
       {
         role = "user",
@@ -395,29 +394,6 @@ local clean_arch_workflow = create_workflow(
         },
       },
     },
-    --[[ {
-      -- Migration verification (persistent)
-      {
-        role = "user",
-        content =
-        "Please verify that the #feature{watch} feature now follows clean architecture principles. Ensure we've properly implemented all layers and dependency injection. What tests should we add to verify the functionality?",
-        -- type = "persistent",
-        opts = {
-          auto_submit = false,
-        },
-      },
-    }, ]]
-    --[[ {
-      -- Migration summary
-      {
-        role = "user",
-        content =
-        "Please provide a summary of all the features we've migrated so far, what remains to be done, and any improvements we should make to the overall architecture.",
-        opts = {
-          auto_submit = false,
-        },
-      },
-    }, ]]
   }
 )
 
@@ -430,7 +406,7 @@ codecompanion.setup({
     ["Innsof Project Refactoring Workflow --> Convert Dimens to ISizes"] = dart_refactor_workflow,
     ["Flutter Format Workflow"] = flutter_format_workflow,
     ["Innsof Theme Migration Workflow"] = theme_migration_workflow,
-    ["Flutter Clean Architecture Migration"] = clean_arch_workflow,
+    -- ["Flutter Clean Architecture Migration"] = clean_arch_workflow,
   },
   strategies = {
     chat = {
